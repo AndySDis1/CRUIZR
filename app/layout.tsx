@@ -1,18 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
-import './globals.css';
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-});
+import './styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Cruizr - Express Your Presence, Connect Your World',
@@ -26,7 +13,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${playfair.variable} min-h-screen antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" 
+          rel="stylesheet" 
+        />
+      </head>
+      <body className="min-h-screen antialiased">
         <div className="relative min-h-screen">
           {/* Background gradient */}
           <div className="fixed inset-0 bg-gradient-to-br from-[#050507] via-[#050507] to-slate-900 -z-10" />
