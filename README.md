@@ -60,6 +60,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 3. Configure environment variables in Vercel dashboard
 4. Deploy!
 
+### Deploy with Docker
+
+1. Build the Docker image:
+```bash
+docker build -t cruizr .
+```
+
+2. Run the container:
+```bash
+docker run -p 3000:3000 --env-file .env cruizr
+```
+
+Or use Docker Compose:
+```bash
+docker-compose up -d
+```
+
 ### Manual Deployment
 
 1. Build the project:
