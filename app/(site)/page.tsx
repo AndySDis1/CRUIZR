@@ -101,7 +101,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold text-white mb-4 text-center">Atmospheric Map</h3>
               <p className="text-gray-300 text-center">
                 Beautiful realm-colored auras show presence and intent. 
-                See who's nearby right now.
+                See who&apos;s nearby right now.
               </p>
             </motion.div>
 
@@ -118,7 +118,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold text-white mb-4 text-center">Privacy & Safety</h3>
               <p className="text-gray-300 text-center">
                 Location jitter, mutual realm gating, and granular controls. 
-                Your safety isn't optional.
+                Your safety isn&apos;t optional.
               </p>
             </motion.div>
           </div>
