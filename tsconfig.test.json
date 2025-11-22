@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".cache-tests",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2019",
+    "lib": ["es2019"],
+    "jsx": "react-jsx"
+  },
+  "include": ["tests/**/*.ts", "app/lib/**/*.ts"],
+  "exclude": ["node_modules"]
+}

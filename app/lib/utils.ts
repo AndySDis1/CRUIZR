@@ -1,29 +1,8 @@
-export type RealmType = 'professional' | 'social' | 'dating' | 'sexual' | 'neutral';
+import { RealmType, REALM_COLORS } from './types';
 
-export type VisibilityScope = 'public' | 'friends' | 'circles' | 'mutualRealm';
+export const cn = (...classes: Array<string | undefined | false>) => classes.filter(Boolean).join(' ');
 
-export interface UserProfile {
-  uid: string;
-  displayName: string;
-  email: string | null;
-  photoURL: string | null;
-  ageVerified: boolean;
-  interests: string[];
-  circles: string[];
-}
+export const getRealmColor = (realm: RealmType) => REALM_COLORS[realm];
 
-export const REALM_COLORS: Record<RealmType, string> = {
-  professional: '#6BA4FF',
-  social: '#27E1C1',
-  dating: '#FF6B9A',
-  sexual: '#E33E3E',
-  neutral: '#94A3B8',
-};
-
-export const REALM_LABELS: Record<RealmType, string> = {
-  professional: 'Professional',
-  social: 'Social',
-  dating: 'Dating',
-  sexual: 'Sexual',
-  neutral: 'Neutral',
-};
+export const formatAttendees = (value: number) =>
+  Intl.NumberFormat('en', { notation: value > 999 ? 'compact' : 'standard' }).format(value);
