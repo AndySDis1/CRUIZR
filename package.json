@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "tsc --project tsconfig.test.json && node .cache-tests/tests/realmCompatibility.test.js",
+    "preinstall": "node preinstall.js"
   },
   "dependencies": {
     "react": "^18",

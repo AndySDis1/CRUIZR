@@ -5,6 +5,7 @@ node_modules
 
 # Testing
 /coverage
+.cache-tests
 
 # Next.js
 /.next/
