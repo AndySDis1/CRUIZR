@@ -1,29 +1,30 @@
-export type RealmType = 'professional' | 'social' | 'dating' | 'sexual' | 'neutral';
+import { REALM_COLORS, REALM_LABELS, RealmType } from './types';
 
-export type VisibilityScope = 'public' | 'friends' | 'circles' | 'mutualRealm';
+export const getRealmAccent = (realm: RealmType) => REALM_COLORS[realm];
 
-export interface UserProfile {
-  uid: string;
-  displayName: string;
-  email: string | null;
-  photoURL: string | null;
-  ageVerified: boolean;
-  interests: string[];
-  circles: string[];
-}
+export const getRealmLabel = (realm: RealmType) => REALM_LABELS[realm];
 
-export const REALM_COLORS: Record<RealmType, string> = {
-  professional: '#6BA4FF',
-  social: '#27E1C1',
-  dating: '#FF6B9A',
-  sexual: '#E33E3E',
-  neutral: '#94A3B8',
+export const getAuraGradient = (realm: RealmType) => {
+  const base = getRealmAccent(realm);
+  return `linear-gradient(135deg, ${base} 0%, rgba(5,5,7,0.6) 100%)`;
 };
 
-export const REALM_LABELS: Record<RealmType, string> = {
-  professional: 'Professional',
-  social: 'Social',
-  dating: 'Dating',
-  sexual: 'Sexual',
-  neutral: 'Neutral',
+export const calculateRealmCompatibility = (
+  viewerRealm: RealmType,
+  profileRealm: RealmType,
+  sharedInterests = 0,
+  proximityKm = 2,
+) => {
+  const realmMatch = viewerRealm === profileRealm ? 40 : 20;
+  const intentBonus = viewerRealm === 'neutral' || profileRealm === 'neutral' ? 5 : 15;
+  const interestScore = Math.min(sharedInterests * 8, 30);
+  const proximityScore = Math.max(0, 25 - proximityKm * 4);
+  return Math.min(100, realmMatch + intentBonus + interestScore + proximityScore);
+};
+
+export const formatMinutes = (minutes: number) => {
+  if (minutes < 60) return `${minutes}m`;
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `${hours}h ${remainingMinutes}m`;
 };
