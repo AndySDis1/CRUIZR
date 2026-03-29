@@ -2,6 +2,16 @@ export type RealmType = 'professional' | 'social' | 'dating' | 'sexual' | 'neutr
 
 export type VisibilityScope = 'public' | 'friends' | 'circles' | 'mutualRealm';
 
+export interface RealmDefinition {
+  id: RealmType;
+  title: string;
+  description: string;
+  accent: string;
+  aura: string;
+  mapTheme: string;
+  icon: string;
+}
+
 export interface UserProfile {
   uid: string;
   displayName: string;
@@ -10,6 +20,71 @@ export interface UserProfile {
   ageVerified: boolean;
   interests: string[];
   circles: string[];
+  activeRealm: RealmType;
+}
+
+export interface PresenceSpot {
+  id: string;
+  label: string;
+  realm: RealmType;
+  auraIntensity: number;
+  compatibility: number;
+  vibe: string;
+  intent: string;
+}
+
+export interface MapAvatar {
+  id: string;
+  name: string;
+  realm: RealmType;
+  intent: string;
+  mood: string;
+  x: number; // percentage position on the map canvas
+  y: number; // percentage position on the map canvas
+  accent: string;
+}
+
+export interface DropIn {
+  id: string;
+  title: string;
+  realm: RealmType;
+  expiresInMinutes: number;
+  content: string;
+  coordinates: string;
+}
+
+export interface StoryCard {
+  id: string;
+  author: string;
+  realm: RealmType;
+  headline: string;
+  duration: string;
+  cover: string;
+}
+
+export interface CircleSpotlight {
+  id: string;
+  name: string;
+  realm: RealmType;
+  location: string;
+  members: number;
+  type: 'circle' | 'event';
+  status: 'open' | 'curated';
+}
+
+export interface SafetyPillar {
+  id: string;
+  title: string;
+  description: string;
+  badges: string[];
+}
+
+export interface MonetizationTier {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  benefits: string[];
 }
 
 export const REALM_COLORS: Record<RealmType, string> = {

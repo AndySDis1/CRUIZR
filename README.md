@@ -1,127 +1,77 @@
-# CRUIZR
+# SceneHim · Social Presence Network
 
-A modern social presence network that respects your privacy.
+SceneHim (codename **CRUIZR**) is a fashion-editorial social presence network where intent, vibe, and location are filtered
+through **Selective Realms**: professional, social, dating, sexual (18+), and neutral fallback. Animated atmospheric maps,
+GhostChat (ephemeral location-bound DMs), circles, and monetization tiers are modeled in this MVP so the product narrative is
+clear before backend integration.
 
-## Features
+## Highlights
 
-- 🌍 Real-time location sharing with privacy controls
-- 🔒 Privacy-focused with granular permission settings
-- 🗺️ Interactive maps powered by Mapbox
-- 🔥 Firebase backend for authentication and data storage
-- ⚡ Built with Next.js 15 and React 18
-- 🎨 Modern UI with Tailwind CSS and Framer Motion
+- 🎚️ **Selective Realms** – Realm selector drives aura colors, compatibility scoring, and exposure radius.
+- 🗺️ **Atmospheric Map** – Cinematic gradients visualize presence clusters, compatibility, and drop-ins.
+- 💬 **GhostChat & Drop-ins** – Ephemeral communication windows + geo-pinned micro posts.
+- 🌀 **Circles & Events** – Spotlight cards for community spaces and promoted events.
+- 🛡️ **Safety Stack** – Location jitter, consent-first flows, and moderator guardrails documented + surfaced.
+- 💸 **Monetization** – Boosts, SceneHim Pro, and Brand Galleries tiers included for go-to-market planning.
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18.x or later
-- npm or yarn
-- Firebase project
-- Mapbox account
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/AndySDis1/CRUIZR.git
-cd CRUIZR
-```
-
-2. Install dependencies:
+### 1. Install deps
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+### 2. Configure environment
+Copy the sample env file and fill in Firebase + Mapbox + analytics keys.
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
+Review `docs/PRODUCT.md` for the full variable list (PostHog + feature flags included).
 
-Edit `.env` and add your Firebase and Mapbox credentials:
-- Get Firebase credentials from [Firebase Console](https://console.firebase.google.com/)
-- Get Mapbox token from [Mapbox Account](https://account.mapbox.com/)
-
-4. Run the development server:
+### 3. Run locally
 ```bash
 npm run dev
 ```
+Visit [http://localhost:3000](http://localhost:3000) to explore the cinematic landing experience.
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Deployment
-
-### Deploy to Vercel (Recommended)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AndySDis1/CRUIZR)
-
-1. Click the "Deploy with Vercel" button above
-2. Connect your GitHub account
-3. Configure environment variables in Vercel dashboard
-4. Deploy!
-
-### Deploy with Docker
-
-1. Build the Docker image:
+### 4. Preview production build
 ```bash
-docker build -t cruizr .
+npm run preview
 ```
-
-2. Run the container:
-```bash
-docker run -p 3000:3000 --env-file .env cruizr
-```
-
-Or use Docker Compose:
-```bash
-docker-compose up -d
-```
-
-### Manual Deployment
-
-1. Build the project:
-```bash
-npm run build
-```
-
-2. Start the production server:
-```bash
-npm start
-```
-
-### Environment Variables
-
-Make sure to set these environment variables in your deployment platform:
-
-- `NEXT_PUBLIC_FIREBASE_API_KEY`
-- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
-- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
-- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
-- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
-- `NEXT_PUBLIC_FIREBASE_APP_ID`
-- `NEXT_PUBLIC_MAPBOX_TOKEN`
+This runs a full build and starts Next.js in production mode so you can validate motion, gradients, and realm theming with the optimized bundle.
 
 ## Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript type checking
+- `npm run dev` – Start Next.js dev server
+- `npm run build` – Production build
+- `npm run start` – Run production server locally
+- `npm run preview` – Build then run production server for parity checks
+- `npm run lint` – ESLint (quality gate)
+- `npm run type-check` – TypeScript project validation
+
+## Documentation
+
+- [`DECISIONS.md`](./DECISIONS.md) – Opinionated choices + tradeoffs.
+- [`docs/STACK.md`](./docs/STACK.md) – Tooling matrix, versions, CI expectations.
+- [`docs/PRODUCT.md`](./docs/PRODUCT.md) – Data models, env vars, safety + monetization specs.
+- [`DEPLOYMENT.md`](./DEPLOYMENT.md) – Existing deployment instructions (Vercel, Docker, etc.).
 
 ## Tech Stack
 
-- **Framework:** Next.js 15
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Components:** Radix UI
-- **Animation:** Framer Motion
-- **Maps:** Mapbox GL
-- **Backend:** Firebase
-- **Form Validation:** Zod
+- **Framework** – Next.js 15 (App Router) + React 18 (RSC + Client components where needed)
+- **Language** – TypeScript
+- **Styling** – Tailwind CSS + custom gradients
+- **Motion** – Framer Motion
+- **Maps** – Mapbox GL JS (placeholder gradient until token is wired)
+- **Backend Targets** – Firebase Auth/Firestore/Storage, Firebase Cloud Messaging, PostHog analytics
 
-## License
+## Deployment
 
-MIT
+- Deploy on **Vercel** with the env variables configured in the dashboard.
+- Use **Firebase Functions** for location-jittered APIs, GhostChat encryption helpers, and moderation hooks.
+- Optional Docker path: `docker-compose up --build`.
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/AndySDis1/CRUIZR)
+## Status
+
+This repository ships a polished marketing + product experience with real data models so engineering can continue wiring
+Firebase + Mapbox integrations without redoing UI. Refer to `docs/PRODUCT.md` for acceptance checklist coverage.
